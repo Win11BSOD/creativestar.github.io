@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创星工作室 - 移动版</title>
+    <!-- 引入 Pulltorefresh.js -->
+    <script src="refresh.js"></script>
+    <style>
+        /* 自定义字体 */
+        @font-face {
+            font-family: 'AvenirNext';
+            src: url('../fonts/ae.woff2') format('woff2'),
+                 url('../fonts/ae.woff') format('woff'),
+                 url('../fonts/ae.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'AvenirNext', Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            color: #333;
+            padding-top: 20px; /* 页面顶部留白 */
+        }
+        h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .center-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            padding: 12px 24px;
+            font-size: 1em;
+            color: white;
+            background-color: #1e90ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto;
+            width: fit-content;
+        }
+        .button:hover {
+            background-color: #1c7cd5;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.875em;
+            color: #888;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script>
+        // 检测是否为移动设备并进行重定向
+        function detectDeviceAndRedirect() {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (!isMobile) {
+                window.location.href = "../index.html";
+            }
+        }
+
+        window.onload = function() {
+            detectDeviceAndRedirect();
+
+            // 初始化 Pulltorefresh.js
+            PullToRefresh.init({
+                mainElement: 'body',
+                onRefresh: function() {
+                    window.location.reload();
+                }
+            });
+        };
+        function clicked(){
+            alert("服务器正在内测。\n添加QQ2069590877。")
+        };
+    </script>
+</head>
+<body>
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 加载图片 -->
+        <div class="load_crtlogo">
+            <img src="../img/logo1.jpeg" alt="Logo" class="center-img">
+        </div>
+
+        <!-- 标题 -->
+        <h1>创星工作室</h1>
+
+        <!-- 文本 -->
+        <p>欢迎来到创星工作室官方网站<br>网站正在建设中，敬请期待</p>
+
+        <!-- 按钮 -->
+        <a onclick="clicked()" class="button">创星生存服务器</a>
+    </div>
+
+    <!-- 底部版权信息 -->
+    <div class="footer">
+        By FocalList233333（郭铭浩）<br>
+        ©杭州市点时电子商务有限公司
+    </div>
+</body>
+</html>

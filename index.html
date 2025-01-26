@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <title>创星工作室</title>
     <style>
-        /* 引入自定义字体 */
         @font-face {
             font-family: 'AvenirNext';
-            src: url('/fonts/ae.ttf') format('truetype'),
-                 url('/fonts/ae.woff2') format('woff2'); 
+            src: url('fonts/ae.woff2') format('woff2'),
+                 url('fonts/ae.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -25,6 +24,7 @@
             text-align: center;
             height: 100vh;
             color: #333;
+            position: relative; /* 确保底部文字相对于body定位 */
         }
         .center-img {
             width: 250px;
@@ -51,9 +51,47 @@
             margin: 20px auto;
             border-radius: 2px;
         }
+        /* 按钮样式 */
+        .button {
+            margin-top: 40px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #1e90ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #1c7cd5;
+        }
+        /* 底部版权信息样式 */
+        .footer {
+            position: absolute;
+            bottom: 20px; /* 距离底部的距离 */
+            font-size: 0.875em; /* 小字体 */
+            color: #888; /* 灰色 */
+            font-family: Arial, sans-serif; /* 使用普通系统字体 */
+        }
     </style>
     <script>
-        console.info("该功能正在建设中");
+        // 检测是否为移动设备并进行重定向
+        function detectDeviceAndRedirect() {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                window.location.href = "mobile/index.html";
+            }
+        }
+
+        window.onload = function() {
+            detectDeviceAndRedirect();
+            console.info("该功能正在建设中");
+        };
+        function clicked(){
+            alert("服务器正在内测。\n添加QQ2069590877。")
+        };
     </script>
 </head>
 <body>
@@ -68,6 +106,14 @@
         <p>
             欢迎来到创星工作室官方网站<br>网站正在建设中，敬请期待
         </p>
+    </div>
+    <!--按钮-->
+    <a onclick="clicked()" class="button">创星生存服务器</a>
+
+    <!-- 底部版权信息 -->
+    <div class="footer">
+        By FocalList233333（郭铭浩）<br>
+        ©杭州市点时电子商务有限公司
     </div>
 </body>
 </html>
