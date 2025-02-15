@@ -169,16 +169,18 @@
  
         menuButton.addEventListener('mousedown',  function (e) { 
             isDragging = true; 
-            initialX = e.pageX;  
-            initialY = e.pageY;  
+            initialX = e.clientX;  
+            initialY = e.clientY;  
+            // 记录菜单按钮的初始位置 
+            const rect = menuButton.getBoundingClientRect();  
+            initialX -= rect.left;  
+            initialY -= rect.top;  
         }); 
  
         document.addEventListener('mousemove',  function (e) { 
             if (isDragging) { 
-                const dx = e.pageX  - initialX; 
-                const dy = e.pageY  - initialY; 
-                const newLeft = menuButton.offsetLeft  + dx; 
-                const newTop = menuButton.offsetTop  + dy; 
+                const newLeft = e.clientX  - initialX; 
+                const newTop = e.clientY  - initialY; 
  
                 const windowWidth = window.innerWidth;  
                 const windowHeight = window.innerHeight;  
@@ -254,9 +256,8 @@
  
     <!-- 底部版权信息 --> 
     <div class="footer"> 
-        By FocalList233333（郭铭浩）<br> 
+        By FocalList333333（郭铭浩）<br> 
         ©杭州市点时电子商务有限公司 
     </div> 
 </body> 
- 
 </html> 
