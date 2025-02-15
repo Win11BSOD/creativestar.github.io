@@ -1,17 +1,19 @@
-<html lang="zh-CN"> 
- 
-<head> 
-    <meta charset="UTF-8"> 
-    <title>创星工作室</title> 
-    <style> 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>创星工作室</title>
+    <style>
+        /* 字体定义 */
         @font-face { 
             font-family: 'AvenirNext'; 
-            src: url('fonts/ae.woff2')  format('woff2'), 
-                url('fonts/ae.ttf')  format('truetype'); 
+            src: url('fonts/ae.woff2')   format('woff2'), 
+                url('fonts/ae.ttf')   format('truetype'); 
             font-weight: normal; 
             font-style: normal; 
-        } 
+        }
  
+        /* 页面整体样式 */
         body { 
             font-family: 'AvenirNext', Arial, sans-serif; 
             background: linear-gradient(135deg, #d2e9e9 0%, #ffffff 100%); 
@@ -25,40 +27,45 @@
             height: 100vh; 
             color: #333; 
             position: relative; 
-        } 
+        }
  
-     .center-img { 
+        /* 中心图片样式 */
+        .center-img { 
             width: 250px; 
             height: auto; 
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); 
             border-radius: 12px; 
             transition: transform 0.3s ease-in-out; 
-        } 
+        }
  
-     .center-img:hover { 
+        /* 图片悬停效果 */
+        .center-img:hover { 
             transform: scale(1.05); 
-        } 
+        }
  
-     .load_label_1 { 
+        /* 加载文本样式 */
+        .load_label_1 { 
             margin-top: 30px; 
-        } 
+        }
  
-     .load_label_1 p { 
+        /* 加载文本字体大小 */
+        .load_label_1 p { 
             font-size: 1.5em; 
             line-height: 1.8; 
             letter-spacing: 0.5px; 
-        } 
+        }
  
-     .decorative-line { 
+        /* 装饰线样式 */
+        .decorative-line { 
             width: 60px; 
             height: 4px; 
             background-color: #2c3e50; 
             margin: 20px auto; 
             border-radius: 2px; 
-        } 
+        }
  
-        /* 按钮样式 */ 
-     .button { 
+        /* 按钮样式 */
+        .button { 
             margin-top: 40px; 
             padding: 10px 20px; 
             font-size: 1.2em; 
@@ -69,23 +76,24 @@
             cursor: pointer; 
             text-decoration: none; 
             transition: background-color 0.3s ease; 
-        } 
+        }
  
-     .button:hover { 
+        /* 按钮悬停效果 */
+        .button:hover { 
             background-color: #1c7cd5; 
-        } 
+        }
  
-        /* 底部版权信息样式 */ 
-     .footer { 
+        /* 底部版权信息样式 */
+        .footer { 
             position: absolute; 
             bottom: 20px; 
             font-size: 0.875em; 
             color: #888; 
             font-family: Arial, sans-serif; 
-        } 
+        }
  
-        /* 侧边栏样式 */ 
-     .sidebar { 
+        /* 侧边栏样式 */
+        .sidebar { 
             position: fixed; 
             left: -250px; 
             top: 0; 
@@ -95,32 +103,36 @@
             color: white; 
             transition: left 0.3s ease; 
             z-index: 1000; 
-        } 
+        }
  
-     .sidebar.open  { 
+        /* 侧边栏展开样式 */
+        .sidebar.open  { 
             left: 0; 
-        } 
+        }
  
-     .sidebar ul { 
+        /* 侧边栏列表样式 */
+        .sidebar ul { 
             list-style-type: none; 
             padding: 0; 
             margin: 0; 
-        } 
+        }
  
-     .sidebar ul li { 
+        /* 侧边栏列表项样式 */
+        .sidebar ul li { 
             padding: 15px; 
             font-size: 1.2em; 
             border-bottom: 1px solid #444; 
-        } 
+        }
  
-     .sidebar ul li a { 
+        /* 侧边栏链接样式 */
+        .sidebar ul li a { 
             color: white; 
             text-decoration: none; 
             font-family: 'AvenirNext', Arial, sans-serif; 
-        } 
+        }
  
-        /* 菜单按钮样式 */ 
-     .menu-button { 
+        /* 菜单按钮样式 */
+        .menu-button { 
             position: fixed; 
             top: 20px; 
             left: 20px; 
@@ -137,127 +149,120 @@
             font-size: 2em; 
             z-index: 1001; 
             user-select: none; 
-            cursor: move; 
-        } 
-    </style> 
-    <script> 
+        }
+    </style>
+    <script>
         // 检测是否为移动设备并进行重定向 
         function detectDeviceAndRedirect() { 
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);  
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);   
             if (isMobile) { 
-                window.location.href  = "mobile/index.html";  
+                window.location.href  = "mobile/index.html";   
             } 
-        } 
+        }
  
         window.onload  = function () { 
             detectDeviceAndRedirect(); 
             console.info(" 该功能正在建设中"); 
-        }; 
+        };
  
+        // 创建 QQ 提示弹窗 
         function clicked() { 
             alert("服务器正在内测。\n添加QQ2069590877。"); 
-        } 
+        }
  
+        // 切换侧边栏显示状态 
         function toggleSidebar() { 
-            const sidebar = document.querySelector('.sidebar');  
-            sidebar.classList.toggle('open');  
-        } 
+            const sidebar = document.querySelector('.sidebar');   
+            sidebar.classList.toggle('open');   
+        }
  
-        let isDragging = false; 
-        let initialX, initialY; 
-        const menuButton = document.querySelector('.menu-button');  
+        // 拖动功能实现 
+        let isDragging = false;
+        let initialX, initialY;
+        const menuButton = document.querySelector('.menu-button'); 
  
         menuButton.addEventListener('mousedown',  function (e) { 
-            isDragging = true; 
-            initialX = e.clientX;  
-            initialY = e.clientY;  
-            // 记录菜单按钮的初始位置 
-            const rect = menuButton.getBoundingClientRect();  
-            initialX -= rect.left;  
-            initialY -= rect.top;  
-        }); 
+            isDragging = true;
+            const rect = menuButton.getBoundingClientRect();   
+            initialX = e.clientX  - rect.left;   
+            initialY = e.clientY  - rect.top;   
+        });
  
         document.addEventListener('mousemove',  function (e) { 
             if (isDragging) { 
-                const newLeft = e.clientX  - initialX; 
-                const newTop = e.clientY  - initialY; 
+                const newLeft = e.clientX  - initialX;
+                const newTop = e.clientY  - initialY;
  
-                const windowWidth = window.innerWidth;  
-                const windowHeight = window.innerHeight;  
+                const windowWidth = window.innerWidth; 
+                const windowHeight = window.innerHeight; 
  
-                if (newLeft <= 0) { 
-                    menuButton.style.left  = '0px'; 
-                } else if (newLeft >= windowWidth - menuButton.offsetWidth)  { 
-                    menuButton.style.left  = (windowWidth - menuButton.offsetWidth)  + 'px'; 
-                } else { 
-                    menuButton.style.left  = newLeft + 'px'; 
-                } 
+                // 确保按钮在窗口内移动 
+                if (newLeft < 0) newLeft = 0;
+                if (newLeft > windowWidth - menuButton.offsetWidth)  newLeft = windowWidth - menuButton.offsetWidth; 
+                if (newTop < 0) newTop = 0;
+                if (newTop > windowHeight - menuButton.offsetHeight)  newTop = windowHeight - menuButton.offsetHeight; 
  
-                if (newTop <= 0) { 
-                    menuButton.style.top  = '0px'; 
-                } else if (newTop >= windowHeight - menuButton.offsetHeight)  { 
-                    menuButton.style.top  = (windowHeight - menuButton.offsetHeight)  + 'px'; 
-                } else { 
-                    menuButton.style.top  = newTop + 'px'; 
-                } 
+                menuButton.style.left  = newLeft + 'px';
+                menuButton.style.top  = newTop + 'px';
  
-                const centerX = windowWidth / 2; 
-                const centerY = windowHeight / 2; 
-                const buttonCenterX = menuButton.offsetLeft  + menuButton.offsetWidth  / 2; 
-                const buttonCenterY = menuButton.offsetTop  + menuButton.offsetHeight  / 2; 
+                // 自动回到中心位置的逻辑 
+                const centerX = windowWidth / 2;
+                const centerY = windowHeight / 2;
+                const buttonCenterX = newLeft + menuButton.offsetWidth  / 2;
+                const buttonCenterY = newTop + menuButton.offsetHeight  / 2;
  
-                if ( 
-                    buttonCenterX > centerX - 50 && 
-                    buttonCenterX < centerX + 50 && 
-                    buttonCenterY > centerY - 50 && 
+                if (
+                    buttonCenterX > centerX - 50 &&
+                    buttonCenterX < centerX + 50 &&
+                    buttonCenterY > centerY - 50 &&
                     buttonCenterY < centerY + 50 
-                ) { 
-                    menuButton.style.left  = '20px'; 
-                    menuButton.style.top  = '20px'; 
-                } 
-            } 
-        }); 
+                ) {
+                    menuButton.style.left  = '20px';
+                    menuButton.style.top  = '20px';
+                }
+            }
+        });
  
         document.addEventListener('mouseup',  function () { 
-            isDragging = false; 
-        }); 
-    </script> 
-</head> 
+            isDragging = false;
+        });
+    </script>
+</head>
  
-<body> 
-    <!-- 菜单按钮 --> 
-    <div class="menu-button" onclick="toggleSidebar()">☰</div> 
+<body>
+    <!-- 菜单按钮 -->
+    <div class="menu-button" onclick="toggleSidebar()">☰</div>
  
-    <!-- 侧边栏 --> 
-    <div class="sidebar"> 
-        <ul> 
-            <li><a href="/class/index.html"> 去创星中队</a></li> 
-        </ul> 
-    </div> 
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="/class/index.html"> 去创星中队</a></li>
+        </ul>
+    </div>
  
-    <!-- 加载图片 --> 
-    <div class="load_crtlogo"> 
-        <img src="img/logo1.jpeg"  alt="Logo" class="center-img"> 
-    </div> 
+    <!-- 加载图片 -->
+    <div class="load_crtlogo">
+        <img src="img/logo1.jpeg"  alt="Logo" class="center-img">
+    </div>
  
-    <!-- 装饰线 --> 
-    <div class="decorative-line"></div> 
+    <!-- 装饰线 -->
+    <div class="decorative-line"></div>
  
-    <!-- 文本 --> 
-    <div class="load_label_1"> 
-        <p> 
-            欢迎来到创星工作室官方网站<br> 
+    <!-- 文本 -->
+    <div class="load_label_1">
+        <p>
+            欢迎来到创星工作室官方网站<br>
             网站正在建设中，敬请期待 
-        </p> 
-    </div> 
+        </p>
+    </div>
  
-    <!-- 按钮 --> 
-    <a onclick="clicked()" class="button">创星生存服务器</a> 
+    <!-- 按钮 -->
+    <a onclick="clicked()" class="button">创星生存服务器</a>
  
-    <!-- 底部版权信息 --> 
-    <div class="footer"> 
-        By FocalList333333（郭铭浩）<br> 
+    <!-- 底部版权信息 -->
+    <div class="footer">
+        By FocalList333333（郭铭浩）<br>
         ©杭州市点时电子商务有限公司 
-    </div> 
-</body> 
-</html> 
+    </div>
+</body>
+</html>
