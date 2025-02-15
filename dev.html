@@ -1,0 +1,160 @@
+<!DOCTYPE html> 
+<html lang="zh-CN"> 
+ 
+<head> 
+    <!-- 文档字符编码 --> 
+    <meta charset="UTF-8"> 
+    <!-- 页面在移动设备上的显示设置 --> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <!-- 页面描述，可用于搜索引擎搜索结果的展示 --> 
+    <meta name="description" content="创星工作室官方页面，包含创星中队入口等功能"> 
+    <!-- 页面关键词，有助于搜索引擎优化 --> 
+    <meta name="keywords" content="创星工作室, 创星中队, 侧边栏菜单"> 
+    <!-- 页面标题 --> 
+    <title>创星工作室</title> 
+    <style> 
+        /* 定义自定义字体 */ 
+        @font-face { 
+            font-family: 'CustomFont'; 
+            src: url('customfont.woff2')  format('woff2'), 
+                 url('customfont.woff')  format('woff'); 
+            font-weight: normal; 
+            font-style: normal; 
+        } 
+ 
+        /* 全局样式重置 */ 
+        body { 
+            font-family: 'CustomFont', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f4f4f4; 
+        } 
+ 
+        /* 侧边栏样式 */ 
+       .sidebar { 
+            height: 100%; 
+            width: 0; 
+            position: fixed; 
+            z-index: 1; 
+            top: 0; 
+            left: 0; 
+            background-color: #111; 
+            overflow-x: hidden; 
+            transition: 0.5s; 
+            padding-top: 60px; 
+        } 
+ 
+        /* 侧边栏链接样式 */ 
+       .sidebar a { 
+            padding: 8px 8px 8px 32px; 
+            text-decoration: none; 
+            font-size: 20px; 
+            color: #818181; 
+            display: block; 
+            transition: 0.3s; 
+        } 
+ 
+        /* 侧边栏链接悬停效果 */ 
+       .sidebar a:hover { 
+            color: #f1f1f1; 
+        } 
+ 
+        /* 关闭侧边栏按钮样式 */ 
+       .sidebar.closebtn  { 
+            position: absolute; 
+            top: 0; 
+            right: 25px; 
+            font-size: 36px; 
+            margin-left: 50px; 
+        } 
+ 
+        /* 打开侧边栏按钮样式 */ 
+       .openbtn { 
+            font-size: 30px; 
+            cursor: pointer; 
+            background-color: #111; 
+            color: white; 
+            padding: 10px 15px; 
+            border: none; 
+            position: fixed; 
+            top: 10px; 
+            left: 10px; 
+            z-index: 1; 
+        } 
+ 
+        /* 打开侧边栏按钮悬停效果 */ 
+       .openbtn:hover { 
+            background-color: #444; 
+        } 
+ 
+        /* 内容区域样式 */ 
+        #main { 
+            transition: margin-left.5s; 
+            padding: 16px; 
+        } 
+ 
+        /* 创星中队入口样式 */ 
+       .entry-btn { 
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            background-color: #007BFF; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            text-decoration: none; 
+        } 
+ 
+        /* 创星中队入口悬停效果 */ 
+       .entry-btn:hover { 
+            background-color: #0056b3; 
+        } 
+ 
+        /* 页面标题样式 */ 
+        h1 { 
+            text-align: center; 
+            margin-top: 80px; 
+        } 
+    </style> 
+</head> 
+ 
+<body> 
+    <!-- 侧边栏 --> 
+    <div id="mySidebar" class="sidebar"> 
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a> 
+        <a href="#">首页</a> 
+        <a href="#">关于我们</a> 
+        <a href="#">服务项目</a> 
+        <a href="#">联系我们</a> 
+    </div> 
+ 
+    <!-- 主内容区域 --> 
+    <div id="main"> 
+        <!-- 打开侧边栏按钮 --> 
+        <button class="openbtn" onclick="openNav()">☰</button> 
+        <!-- 页面标题 --> 
+        <h1>创星工作室</h1> 
+        <!-- 页面主要内容，可根据实际情况添加 --> 
+        <p>这里是创星工作室的介绍内容，你可以添加更多信息。</p> 
+    </div> 
+ 
+    <!-- 创星中队入口 --> 
+    <a href="#" class="entry-btn">去创星中队</a> 
+ 
+    <script> 
+        // 打开侧边栏函数 
+        function openNav() { 
+            document.getElementById("mySidebar").style.width  = "250px"; 
+            document.getElementById("main").style.marginLeft  = "250px"; 
+        } 
+ 
+        // 关闭侧边栏函数 
+        function closeNav() { 
+            document.getElementById("mySidebar").style.width  = "0"; 
+            document.getElementById("main").style.marginLeft  = "0"; 
+        } 
+    </script> 
+</body> 
+ 
+</html> 
