@@ -1,4 +1,5 @@
 <html lang="zh-CN"> 
+ 
 <head> 
     <meta charset="UTF-8"> 
     <title>创星工作室</title> 
@@ -6,7 +7,7 @@
         @font-face { 
             font-family: 'AvenirNext'; 
             src: url('fonts/ae.woff2')  format('woff2'), 
-                 url('fonts/ae.ttf')  format('truetype'); 
+                url('fonts/ae.ttf')  format('truetype'); 
             font-weight: normal; 
             font-style: normal; 
         } 
@@ -23,7 +24,7 @@
             text-align: center; 
             height: 100vh; 
             color: #333; 
-            position: relative; /* 确保底部文字相对于body定位 */ 
+            position: relative; 
         } 
  
      .center-img { 
@@ -77,16 +78,16 @@
         /* 底部版权信息样式 */ 
      .footer { 
             position: absolute; 
-            bottom: 20px; /* 距离底部的距离 */ 
-            font-size: 0.875em; /* 小字体 */ 
-            color: #888; /* 灰色 */ 
-            font-family: Arial, sans-serif; /* 使用普通系统字体 */ 
+            bottom: 20px; 
+            font-size: 0.875em; 
+            color: #888; 
+            font-family: Arial, sans-serif; 
         } 
  
         /* 侧边栏样式 */ 
      .sidebar { 
             position: fixed; 
-            left: -250px; /* 初始位置在屏幕左侧之外 */ 
+            left: -250px; 
             top: 0; 
             width: 250px; 
             height: 100vh; 
@@ -97,7 +98,7 @@
         } 
  
      .sidebar.open  { 
-            left: 0; /* 打开侧边栏时显示在屏幕左侧 */ 
+            left: 0; 
         } 
  
      .sidebar ul { 
@@ -135,7 +136,8 @@
             justify-content: center; 
             font-size: 2em; 
             z-index: 1001; 
-            user-select: none; /* 防止文本选中 */ 
+            user-select: none; 
+            cursor: move; 
         } 
     </style> 
     <script> 
@@ -165,16 +167,16 @@
         let initialX, initialY; 
         const menuButton = document.querySelector('.menu-button');  
  
-        menuButton.addEventListener('mousedown',  (e) => { 
+        menuButton.addEventListener('mousedown',  function (e) { 
             isDragging = true; 
-            initialX = e.clientX;  
-            initialY = e.clientY;  
+            initialX = e.pageX;  
+            initialY = e.pageY;  
         }); 
  
-        document.addEventListener('mousemove',  (e) => { 
+        document.addEventListener('mousemove',  function (e) { 
             if (isDragging) { 
-                const dx = e.clientX  - initialX; 
-                const dy = e.clientY  - initialY; 
+                const dx = e.pageX  - initialX; 
+                const dy = e.pageY  - initialY; 
                 const newLeft = menuButton.offsetLeft  + dx; 
                 const newTop = menuButton.offsetTop  + dy; 
  
@@ -197,7 +199,6 @@
                     menuButton.style.top  = newTop + 'px'; 
                 } 
  
-                // 检查是否在中间，如果在中间则弹回 
                 const centerX = windowWidth / 2; 
                 const centerY = windowHeight / 2; 
                 const buttonCenterX = menuButton.offsetLeft  + menuButton.offsetWidth  / 2; 
@@ -215,11 +216,12 @@
             } 
         }); 
  
-        document.addEventListener('mouseup',  () => { 
+        document.addEventListener('mouseup',  function () { 
             isDragging = false; 
         }); 
     </script> 
 </head> 
+ 
 <body> 
     <!-- 菜单按钮 --> 
     <div class="menu-button" onclick="toggleSidebar()">☰</div> 
@@ -250,10 +252,11 @@
     <!-- 按钮 --> 
     <a onclick="clicked()" class="button">创星生存服务器</a> 
  
-    <!-- 底部版权信息 -->
+    <!-- 底部版权信息 --> 
     <div class="footer"> 
         By FocalList233333（郭铭浩）<br> 
         ©杭州市点时电子商务有限公司 
     </div> 
 </body> 
+ 
 </html> 
