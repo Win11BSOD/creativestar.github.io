@@ -1,160 +1,193 @@
-<!DOCTYPE html> 
-<html lang="zh-CN"> 
- 
-<head> 
-    <!-- 文档字符编码 --> 
-    <meta charset="UTF-8"> 
-    <!-- 页面在移动设备上的显示设置 --> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <!-- 页面描述，可用于搜索引擎搜索结果的展示 --> 
-    <meta name="description" content="创星工作室官方页面，包含创星中队入口等功能"> 
-    <!-- 页面关键词，有助于搜索引擎优化 --> 
-    <meta name="keywords" content="创星工作室, 创星中队, 侧边栏菜单"> 
-    <!-- 页面标题 --> 
-    <title>创星工作室</title> 
-    <style> 
-        /* 定义自定义字体 */ 
-        @font-face { 
-            font-family: 'CustomFont'; 
-            src: url('customfont.woff2')  format('woff2'), 
-                 url('customfont.woff')  format('woff'); 
-            font-weight: normal; 
-            font-style: normal; 
-        } 
- 
-        /* 全局样式重置 */ 
-        body { 
-            font-family: 'CustomFont', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: #f4f4f4; 
-        } 
- 
-        /* 侧边栏样式 */ 
-       .sidebar { 
-            height: 100%; 
-            width: 0; 
-            position: fixed; 
-            z-index: 1; 
-            top: 0; 
-            left: 0; 
-            background-color: #111; 
-            overflow-x: hidden; 
-            transition: 0.5s; 
-            padding-top: 60px; 
-        } 
- 
-        /* 侧边栏链接样式 */ 
-       .sidebar a { 
-            padding: 8px 8px 8px 32px; 
-            text-decoration: none; 
-            font-size: 20px; 
-            color: #818181; 
-            display: block; 
-            transition: 0.3s; 
-        } 
- 
-        /* 侧边栏链接悬停效果 */ 
-       .sidebar a:hover { 
-            color: #f1f1f1; 
-        } 
- 
-        /* 关闭侧边栏按钮样式 */ 
-       .sidebar.closebtn  { 
-            position: absolute; 
-            top: 0; 
-            right: 25px; 
-            font-size: 36px; 
-            margin-left: 50px; 
-        } 
- 
-        /* 打开侧边栏按钮样式 */ 
-       .openbtn { 
-            font-size: 30px; 
-            cursor: pointer; 
-            background-color: #111; 
-            color: white; 
-            padding: 10px 15px; 
-            border: none; 
-            position: fixed; 
-            top: 10px; 
-            left: 10px; 
-            z-index: 1; 
-        } 
- 
-        /* 打开侧边栏按钮悬停效果 */ 
-       .openbtn:hover { 
-            background-color: #444; 
-        } 
- 
-        /* 内容区域样式 */ 
-        #main { 
-            transition: margin-left.5s; 
-            padding: 16px; 
-        } 
- 
-        /* 创星中队入口样式 */ 
-       .entry-btn { 
-            position: fixed; 
-            bottom: 20px; 
-            right: 20px; 
-            background-color: #007BFF; 
-            color: white; 
-            padding: 10px 20px; 
-            border: none; 
-            border-radius: 5px; 
-            text-decoration: none; 
-        } 
- 
-        /* 创星中队入口悬停效果 */ 
-       .entry-btn:hover { 
-            background-color: #0056b3; 
-        } 
- 
-        /* 页面标题样式 */ 
-        h1 { 
-            text-align: center; 
-            margin-top: 80px; 
-        } 
-    </style> 
-</head> 
- 
-<body> 
-    <!-- 侧边栏 --> 
-    <div id="mySidebar" class="sidebar"> 
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a> 
-        <a href="#">首页</a> 
-        <a href="#">关于我们</a> 
-        <a href="#">服务项目</a> 
-        <a href="#">联系我们</a> 
-    </div> 
- 
-    <!-- 主内容区域 --> 
-    <div id="main"> 
-        <!-- 打开侧边栏按钮 --> 
-        <button class="openbtn" onclick="openNav()">☰</button> 
-        <!-- 页面标题 --> 
-        <h1>创星工作室</h1> 
-        <!-- 页面主要内容，可根据实际情况添加 --> 
-        <p>这里是创星工作室的介绍内容，你可以添加更多信息。</p> 
-    </div> 
- 
-    <!-- 创星中队入口 --> 
-    <a href="#" class="entry-btn">去创星中队</a> 
- 
-    <script> 
-        // 打开侧边栏函数 
-        function openNav() { 
-            document.getElementById("mySidebar").style.width  = "250px"; 
-            document.getElementById("main").style.marginLeft  = "250px"; 
-        } 
- 
-        // 关闭侧边栏函数 
-        function closeNav() { 
-            document.getElementById("mySidebar").style.width  = "0"; 
-            document.getElementById("main").style.marginLeft  = "0"; 
-        } 
-    </script> 
-</body> 
- 
-</html> 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>创星工作室</title>
+    <style>
+        @font-face {
+            font-family: 'AvenirNext';
+            src: url('fonts/ae.woff2')  format('woff2'),
+                 url('fonts/ae.ttf')  format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'AvenirNext', Arial, sans-serif;
+            background: linear-gradient(135deg, #d2e9e9 0%, #ffffff 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 60px;
+            margin: 0;
+            text-align: center;
+            height: 100vh;
+            color: #333;
+            position: relative;
+            overflow-x: hidden; /* 防止侧边栏溢出 */
+        }
+
+        /* 新增导航菜单样式 */
+        .nav-menu {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-menu:hover {
+            transform: scale(1.2);
+        }
+
+        /* 新增侧边栏样式 */
+        .sidebar {
+            position: fixed;
+            left: -250px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease;
+            z-index: 999;
+            font-family: 'AvenirNext', Arial, sans-serif;
+        }
+
+        .sidebar.active  {
+            transform: translateX(0);
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 10px;
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-link:hover {
+            color: #1e90ff;
+        }
+
+        .center-img {
+            width: 250px;
+            height: auto;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .center-img:hover {
+            transform: scale(1.05);
+        }
+
+        .load_label_1 {
+            margin-top: 30px;
+        }
+
+        .load_label_1 p {
+            font-size: 1.5em;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+        }
+
+        .decorative-line {
+            width: 60px;
+            height: 4px;
+            background-color: #2c3e50;
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* 按钮样式 */
+        .button {
+            margin-top: 40px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #1e90ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #1c7cd5;
+        }
+
+        /* 底部版权信息样式 */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.875em;
+            color: #888;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script>
+        // 检测是否为移动设备并进行重定向
+        function detectDeviceAndRedirect() {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent); 
+            if (isMobile) {
+                window.location.href  = "mobile/index.html"; 
+            }
+        }
+
+        window.onload  = function() {
+            detectDeviceAndRedirect();
+            console.info(" 该功能正在建设中");
+        };
+
+        function clicked(){
+            alert("服务器正在内测。\n添加QQ2069590877。")
+        }
+
+        // 新增侧边栏控制函数
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active'); 
+        }
+    </script>
+</head>
+<body>
+    <!-- 新增导航菜单 -->
+    <div class="nav-menu" onclick="toggleSidebar()">☰</div>
+    
+    <!-- 新增侧边栏 -->
+    <div class="sidebar">
+        <a href="/class/index.html"  class="sidebar-link">去创星中队>
+</   a </div>
+
+    <!--加载图片-->
+    <div class="load_crtlogo">
+        <img src="img/logo1.jpeg"  alt="Logo" class="center-img">
+    </div>
+
+    <!--装饰线-->
+    <div class="decorative-line"></div>
+
+    <!--文本-->
+    <div class="load_label_1">
+        <p>
+            欢迎来到创星工作室官方网站<br>网站正在建设中，敬请期待
+        </p>
+    </div>
+
+    <!--按钮-->
+    <a onclick="clicked()" class="button">创星生存服务器</a>
+
+    <!-- 底部版权信息 -->
+    <div class="footer">
+        By FocalList233333（郭铭浩）<br>
+        ©杭州市点时电子商务有限公司
+    </div>
+</body>
+</html>
