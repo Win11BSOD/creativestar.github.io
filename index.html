@@ -4,116 +4,265 @@
     <meta charset="UTF-8">
     <title>创星工作室</title>
     <style>
-        @font-face {
-            font-family: 'AvenirNext';
-            src: url('fonts/ae.woff2') format('woff2'),
-                 url('fonts/ae.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
+        /* 字体定义 */
+        @font-face { 
+            font-family: 'AvenirNext'; 
+            src: url('fonts/ae.woff2')   format('woff2'), 
+                url('fonts/ae.ttf')   format('truetype'); 
+            font-weight: normal; 
+            font-style: normal; 
         }
-
-        body {
-            font-family: 'AvenirNext', Arial, sans-serif;
-            background: linear-gradient(135deg, #d2e9e9 0%, #ffffff 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding-top: 60px;
-            margin: 0;
-            text-align: center;
-            height: 100vh;
-            color: #333;
-            position: relative; /* 确保底部文字相对于body定位 */
+ 
+        /* 页面整体样式 */
+        body { 
+            font-family: 'AvenirNext', Arial, sans-serif; 
+            background: linear-gradient(135deg, #d2e9e9 0%, #ffffff 100%); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: flex-start; 
+            padding-top: 60px; 
+            margin: 0; 
+            text-align: center; 
+            height: 100vh; 
+            color: #333; 
+            position: relative; 
         }
-        .center-img {
-            width: 250px;
-            height: auto;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            transition: transform 0.3s ease-in-out;
+ 
+        /* 中心图片样式 */
+        .center-img { 
+            width: 250px; 
+            height: auto; 
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); 
+            border-radius: 12px; 
+            transition: transform 0.3s ease-in-out; 
         }
-        .center-img:hover {
-            transform: scale(1.05);
+ 
+        /* 图片悬停效果 */
+        .center-img:hover { 
+            transform: scale(1.05); 
         }
-        .load_label_1 {
-            margin-top: 30px;
+ 
+        /* 加载文本样式 */
+        .load_label_1 { 
+            margin-top: 30px; 
         }
-        .load_label_1 p {
-            font-size: 1.5em;
-            line-height: 1.8;
-            letter-spacing: 0.5px;
+ 
+        /* 加载文本字体大小 */
+        .load_label_1 p { 
+            font-size: 1.5em; 
+            line-height: 1.8; 
+            letter-spacing: 0.5px; 
         }
-        .decorative-line {
-            width: 60px;
-            height: 4px;
-            background-color: #2c3e50;
-            margin: 20px auto;
-            border-radius: 2px;
+ 
+        /* 装饰线样式 */
+        .decorative-line { 
+            width: 60px; 
+            height: 4px; 
+            background-color: #2c3e50; 
+            margin: 20px auto; 
+            border-radius: 2px; 
         }
+ 
         /* 按钮样式 */
-        .button {
-            margin-top: 40px;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            color: white;
-            background-color: #1e90ff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
+        .button { 
+            margin-top: 40px; 
+            padding: 10px 20px; 
+            font-size: 1.2em; 
+            color: white; 
+            background-color: #1e90ff; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            transition: background-color 0.3s ease; 
         }
-        .button:hover {
-            background-color: #1c7cd5;
+ 
+        /* 按钮悬停效果 */
+        .button:hover { 
+            background-color: #1c7cd5; 
         }
+ 
         /* 底部版权信息样式 */
-        .footer {
-            position: absolute;
-            bottom: 20px; /* 距离底部的距离 */
-            font-size: 0.875em; /* 小字体 */
-            color: #888; /* 灰色 */
-            font-family: Arial, sans-serif; /* 使用普通系统字体 */
+        .footer { 
+            position: absolute; 
+            bottom: 20px; 
+            font-size: 0.875em; 
+            color: #888; 
+            font-family: Arial, sans-serif; 
+        }
+ 
+        /* 侧边栏样式 */
+        .sidebar { 
+            position: fixed; 
+            left: -250px; 
+            top: 0; 
+            width: 250px; 
+            height: 100vh; 
+            background-color: #333; 
+            color: white; 
+            transition: left 0.3s ease; 
+            z-index: 1000; 
+        }
+ 
+        /* 侧边栏展开样式 */
+        .sidebar.open  { 
+            left: 0; 
+        }
+ 
+        /* 侧边栏列表样式 */
+        .sidebar ul { 
+            list-style-type: none; 
+            padding: 0; 
+            margin: 0; 
+        }
+ 
+        /* 侧边栏列表项样式 */
+        .sidebar ul li { 
+            padding: 15px; 
+            font-size: 1.2em; 
+            border-bottom: 1px solid #444; 
+        }
+ 
+        /* 侧边栏链接样式 */
+        .sidebar ul li a { 
+            color: white; 
+            text-decoration: none; 
+            font-family: 'AvenirNext', Arial, sans-serif; 
+        }
+ 
+        /* 菜单按钮样式 */
+        .menu-button { 
+            position: fixed; 
+            top: 20px; 
+            left: 20px; 
+            width: 40px; 
+            height: 40px; 
+            background-color: #1e90ff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 2em; 
+            z-index: 1001; 
+            user-select: none; 
         }
     </style>
     <script>
-        // 检测是否为移动设备并进行重定向
-        function detectDeviceAndRedirect() {
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            if (isMobile) {
-                window.location.href = "mobile/index.html";
-            }
+        // 检测是否为移动设备并进行重定向 
+        function detectDeviceAndRedirect() { 
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);   
+            if (isMobile) { 
+                window.location.href  = "mobile/index.html";   
+            } 
         }
-
-        window.onload = function() {
-            detectDeviceAndRedirect();
-            console.info("该功能正在建设中");
+ 
+        window.onload  = function () { 
+            detectDeviceAndRedirect(); 
+            console.info(" 该功能正在建设中"); 
         };
-        function clicked(){
-            alert("服务器正在内测。\n添加QQ2069590877。")
-        };
+ 
+        // 创建 QQ 提示弹窗 
+        function clicked() { 
+            alert("服务器正在内测。\n添加QQ2069590877。"); 
+        }
+ 
+        // 切换侧边栏显示状态 
+        function toggleSidebar() { 
+            const sidebar = document.querySelector('.sidebar');   
+            sidebar.classList.toggle('open');   
+        }
+ 
+        // 拖动功能实现 
+        let isDragging = false;
+        let initialX, initialY;
+        const menuButton = document.querySelector('.menu-button'); 
+ 
+        menuButton.addEventListener('mousedown',  function (e) { 
+            isDragging = true;
+            const rect = menuButton.getBoundingClientRect();   
+            initialX = e.clientX  - rect.left;   
+            initialY = e.clientY  - rect.top;   
+        });
+ 
+        document.addEventListener('mousemove',  function (e) { 
+            if (isDragging) { 
+                const newLeft = e.clientX  - initialX;
+                const newTop = e.clientY  - initialY;
+ 
+                const windowWidth = window.innerWidth; 
+                const windowHeight = window.innerHeight; 
+ 
+                // 确保按钮在窗口内移动 
+                if (newLeft < 0) newLeft = 0;
+                if (newLeft > windowWidth - menuButton.offsetWidth)  newLeft = windowWidth - menuButton.offsetWidth; 
+                if (newTop < 0) newTop = 0;
+                if (newTop > windowHeight - menuButton.offsetHeight)  newTop = windowHeight - menuButton.offsetHeight; 
+ 
+                menuButton.style.left  = newLeft + 'px';
+                menuButton.style.top  = newTop + 'px';
+ 
+                // 自动回到中心位置的逻辑 
+                const centerX = windowWidth / 2;
+                const centerY = windowHeight / 2;
+                const buttonCenterX = newLeft + menuButton.offsetWidth  / 2;
+                const buttonCenterY = newTop + menuButton.offsetHeight  / 2;
+ 
+                if (
+                    buttonCenterX > centerX - 50 &&
+                    buttonCenterX < centerX + 50 &&
+                    buttonCenterY > centerY - 50 &&
+                    buttonCenterY < centerY + 50 
+                ) {
+                    menuButton.style.left  = '20px';
+                    menuButton.style.top  = '20px';
+                }
+            }
+        });
+ 
+        document.addEventListener('mouseup',  function () { 
+            isDragging = false;
+        });
     </script>
 </head>
+ 
 <body>
-    <!--加载图片-->
-    <div class="load_crtlogo">
-        <img src="img/logo1.jpeg" alt="Logo" class="center-img">
+    <!-- 菜单按钮 -->
+    <div class="menu-button" onclick="toggleSidebar()">☰</div>
+ 
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="/class/index.html"> 去创星中队</a></li>
+        </ul>
     </div>
-    <!--装饰线-->
+ 
+    <!-- 加载图片 -->
+    <div class="load_crtlogo">
+        <img src="img/logo1.jpeg"  alt="Logo" class="center-img">
+    </div>
+ 
+    <!-- 装饰线 -->
     <div class="decorative-line"></div>
-    <!--文本-->
+ 
+    <!-- 文本 -->
     <div class="load_label_1">
         <p>
-            欢迎来到创星工作室官方网站<br>网站正在建设中，敬请期待
+            欢迎来到创星工作室官方网站<br>
+            网站正在建设中，敬请期待 
         </p>
     </div>
-    <!--按钮-->
+ 
+    <!-- 按钮 -->
     <a onclick="clicked()" class="button">创星生存服务器</a>
-
+ 
     <!-- 底部版权信息 -->
     <div class="footer">
-        By FocalList233333（郭铭浩）<br>
-        ©杭州市点时电子商务有限公司
+        By FocalList333333（郭铭浩）<br>
+        ©杭州市点时电子商务有限公司 
     </div>
 </body>
 </html>
