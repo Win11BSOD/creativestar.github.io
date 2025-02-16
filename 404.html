@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PINKWIN - 网站建设中</title>
+    <link rel="icon" href="/logo.png"  type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+    <style>
+        :root {
+            --primary-pink: #FFE6EB;
+            --silk-white: #F5F0E6;
+            --deep-gray: #2C2C2C;
+            --accent-gold: #C5A880;
+        }
+ 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+ 
+        body {
+            background-color: var(--silk-white);
+            overflow-x: hidden;
+        }
+ 
+        /* 顶部导航栏 */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+ 
+        .menu-icon:hover {
+            color: var(--accent-gold);
+            transform: rotate(90deg);
+        }
+ 
+        .nav-items {
+            display: flex;
+            margin-left: 40px;
+            gap: 30px;
+        }
+ 
+        .nav-item {
+            color: var(--deep-gray);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+ 
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s;
+        }
+ 
+        .nav-item:hover::after {
+            width: 100%;
+        }
+ 
+        /* 侧边栏 */
+        .sidebar {
+            position: fixed;
+            left: -300px;
+            top: 70px;
+            width: 300px;
+            height: calc(100vh - 70px);
+            background: var(--primary-pink);
+            transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px;
+            z-index: 999;
+        }
+ 
+        .sidebar.active  {
+            left: 0;
+        }
+ 
+        .sidebar-link {
+            display: block;
+            padding: 15px;
+            margin: 10px 0;
+            color: var(--deep-gray);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+ 
+        .sidebar-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(10px);
+        }
+ 
+        /* 主内容区域 */
+        .main-content {
+            margin-top: 70px;
+            padding: 5% 5%;
+            text-align: center;
+            min-height: calc(100vh - 70px);
+        }
+ 
+        /* 404样式 */
+        .error-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .error-code {
+            font-size: 8rem;
+            color: var(--deep-gray);
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+ 
+        .error-message {
+            font-size: 1.5rem;
+            color: var(--deep-gray);
+            margin-bottom: 2rem;
+        }
+ 
+        .construction-text {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+ 
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+ 
+        .animate-fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+ 
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+ 
+            .nav-items {
+                display: none;
+            }
+ 
+            .sidebar {
+                width: 100%;
+                left: -100%;
+            }
+        }
+    </style>
+</head>
+ 
+<body>
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <i class="menu-icon fas fa-bars"></i>
+        <div class="tab">
+            <p>&emsp;</p>
+        </div>
+        <a href="#" style="">
+            <div class="logo" style="gap: 30px">
+                <img src="/logo.png"  alt="PINKWIN Logo">
+            </div>
+        </a>
+        <div class="nav-items">
+            <a href="/index.html#"  class="nav-item">首页</a>
+            <a href="/services.html"  class="nav-item">服务</a>
+            <a href="/news/all.html"  class="nav-item">公司新闻</a>
+            <a href="/description.html"  class="nav-item">介绍</a>
+        </div>
+    </nav>
+ 
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+        <a href="/creativestar/class/index.html"  class="sidebar-link">
+            <i class="fas fa-star"></i> 去创星中队 
+        </a>
+        <a href="/creativestar/index.html"  class="sidebar-link">
+            <i class="fas fa-palette"></i> 创星工作室 
+        </a>
+    </aside>
+ 
+    <!-- 主内容区域 -->
+    <div class="main-content">
+        <div class="error-container animate-fade-in">
+            <div class="error-code">404</div>
+            <div class="error-message">Oops! 页面未找到</div>
+            <div class="construction-text">
+                网站正在建设中<br>
+                敬请期待...
+                <br><br>
+                您可以尝试访问其他页面或稍后再来。
+            </div>
+        </div>
+    </div>
+ 
+    <script>
+        // 侧边栏切换 
+        document.querySelector('.menu-icon').addEventListener('click',  () => {
+            document.querySelector('.sidebar').classList.toggle('active'); 
+        });
+ 
+        // 滚动动画 
+        window.addEventListener('scroll',  () => {
+            const elements = document.querySelectorAll('.animate-fade-in'); 
+            elements.forEach(el  => {
+                const rect = el.getBoundingClientRect(); 
+                if (rect.top  < window.innerHeight  * 0.8) {
+                    el.style.opacity  = '1';
+                    el.style.transform  = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+ 
+</html>
